@@ -35,6 +35,7 @@ public class ParallelMatrixSearch {
         // System.out.println("Tiempo búsqueda paralela: " + ((endTime - startTime) / 1_000_000) + "ms");
     }
 
+    //Metodo para buscar el numero de manera secuencial.
     private static void sequentialSearch() {
         // Implementar búsqueda secuencial
         for (int i = 0;i<MATRIX_SIZE;i++){
