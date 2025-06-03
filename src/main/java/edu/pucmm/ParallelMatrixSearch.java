@@ -1,6 +1,10 @@
 package edu.pucmm;
 
 import java.util.Random;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -16,13 +20,13 @@ public class ParallelMatrixSearch {
 
     public static void main(String[] args) {
         // Inicializar la matriz con valores aleatorios
-        // fillMatrixRandom();
+        fillMatrixRandom();
 
         // Medir el tiempo de ejecución de la búsqueda secuencial
-        // long startTime = System.nanoTime();
-        // sequentialSearch();
-        // long endTime = System.nanoTime();
-        // System.out.println("Tiempo búsqueda secuencial: " + ((endTime - startTime) / 1_000_000) + "ms");
+        long startTime = System.nanoTime();
+        sequentialSearch();
+        long endTime = System.nanoTime();
+        System.out.println("Tiempo búsqueda secuencial: " + ((endTime - startTime) / 1_000_000) + "ms");
 
         // Medir el tiempo de ejecución de la búsqueda paralela
         // startTime = System.nanoTime();
@@ -33,6 +37,14 @@ public class ParallelMatrixSearch {
 
     private static void sequentialSearch() {
         // Implementar búsqueda secuencial
+        for (int i = 0;i<MATRIX_SIZE;i++){
+            for(int j = 0; j<MATRIX_SIZE; j++){
+                if(matrix[i][j] == TARGET){
+                    System.out.println("Encontrado en: " + i + " " + j);
+                    return;
+                }
+            }
+        }
     }
 
     private static void parallelSearch() {
